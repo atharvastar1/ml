@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  cinematigraph-ui:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./saved_model:/app/saved_model
+    environment:
+      - TMDB_API_KEY=${TMDB_API_KEY}
+    restart: always
+
+  cinematigraph-api:
+    build: .
+    ports:
+      - "8000:8000"
+    command: python api/api.py
+    volumes:
+      - ./data:/app/data
+      - ./saved_model:/app/saved_model
+    restart: always
