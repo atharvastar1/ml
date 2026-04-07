@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#004689",
+                    "surface": "#131313",
+                    "surface-variant": "#353534",
+                    "tertiary-container": "#0072d7",
+                    "on-secondary-fixed-variant": "#8e1210",
+                    "on-primary": "#690003",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-fixed": "#ffdad5",
+                    "surface-container-highest": "#353534",
+                    "on-surface-variant": "#e9bcb6",
+                    "secondary-fixed-dim": "#ffb4aa",
+                    "surface-bright": "#3a3939",
+                    "primary": "#ffb4aa",
+                    "on-tertiary-fixed": "#001b3c",
+                    "secondary-container": "#921512",
+                    "secondary": "#ffb4aa",
+                    "on-primary-fixed": "#410001",
+                    "on-error": "#690005",
+                    "primary-container": "#e50914",
+                    "on-tertiary": "#003061",
+                    "surface-container": "#201f1f",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-container": "#fff7f6",
+                    "primary-fixed": "#ffdad5",
+                    "inverse-primary": "#c0000c",
+                    "on-background": "#e5e2e1",
+                    "on-surface": "#e5e2e1",
+                    "on-primary-fixed-variant": "#930007",
+                    "surface-container-lowest": "#0e0e0e",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "on-secondary-container": "#ff9f93",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed": "#d5e3ff",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "on-secondary-fixed": "#410001",
+                    "surface-tint": "#ffb4aa",
+                    "outline": "#af8782",
+                    "on-secondary": "#690003",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary": "#a7c8ff",
+                    "background": "#131313",
+                    "inverse-on-surface": "#313030",
+                    "error": "#ffb4ab",
+                    "outline-variant": "#5e3f3b",
+                    "on-tertiary-container": "#f8f9ff",
+                    "surface-dim": "#131313"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .cinematic-gradient {
+        background: linear-gradient(180deg, rgba(229, 9, 20, 0.05) 0%, rgba(19, 19, 19, 1) 100%);
+      }
+      .fade-bleed {
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0e0e0e;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #353534;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="bg-neutral-900/40 backdrop-blur-xl font-['Manrope'] tracking-tight docked full-width top-0 sticky z-50 no-line tonal-shift flat no shadows">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black tracking-tighter text-red-600 uppercase">GNN Movies</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-white font-bold border-b-2 border-red-600 pb-1 hover:scale-105 transition-transform duration-200" href="#">Discover</a>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors hover:scale-105 transition-transform duration-200" href="#">Movies</a>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors hover:scale-105 transition-transform duration-200" href="#">Series</a>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors hover:scale-105 transition-transform duration-200" href="#">My List</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500">search</span>
+<input class="bg-surface-container-highest border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary w-64" placeholder="Search universe..." type="text"/>
+</div>
+<button class="text-neutral-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS5m9ryMmL11DOQWZpWhxnO0gxDfKB3QGTw0X184mdWAKtHGxMjgA5BOEKaYd9zMKPFBd4Ib5u7KHDqIzrFnnMyj0fJeGOFEhh8FfeSUV_bWU1QpIHFXM8IdhuDTu_CFsdq5B6nT2SeplEBCdLZ-QflEh6_fHFGJ6ceiEXraOLSuSVGdqkoS1DEk3h_aajZhIyRg9CKd0Nhx5BRO1OvT7hhTrPZ5Jw-kHbDpLZOpcgK4glnTZ7nPTMGCFZEHSxmnRma8_rl3fzPQ"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="fixed left-0 top-0 h-full hidden lg:flex flex-col z-40 bg-neutral-950 h-screen w-64 border-r-0 font-['Inter'] text-sm tracking-wide shadow-2xl shadow-black/50">
+<div class="p-8 mb-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+<span class="text-red-600 font-bold uppercase tracking-widest text-[10px]">System Architecture</span>
+</div>
+<h3 class="text-white font-bold text-lg">LightGCN v2.1</h3>
+<p class="text-neutral-500 text-xs">Model Configuration</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 text-neutral-500 hover:text-neutral-200 px-4 py-3 transition-all hover:bg-neutral-800 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 duration-200" data-icon="analytics">analytics</span>
+<span>Engine Status</span>
+</a>
+<a class="flex items-center gap-3 text-white bg-red-600/10 rounded-lg px-4 py-3 border-r-4 border-red-600 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="hub">hub</span>
+<span>LightGCN</span>
+</a>
+<a class="flex items-center gap-3 text-neutral-500 hover:text-neutral-200 px-4 py-3 transition-all hover:bg-neutral-800 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 duration-200" data-icon="query_stats">query_stats</span>
+<span>Precision Metrics</span>
+</a>
+<a class="flex items-center gap-3 text-neutral-500 hover:text-neutral-200 px-4 py-3 transition-all hover:bg-neutral-800 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 duration-200" data-icon="database">database</span>
+<span>Dataset</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<button class="w-full py-3 bg-primary-container text-on-primary-container rounded-full font-bold text-xs uppercase tracking-widest hover:scale-[1.02] transition-transform active:scale-95 duration-100">
+                Recalculate Model
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:ml-64 cinematic-gradient min-h-screen">
+<!-- Hero Header -->
+<header class="px-8 pt-12 pb-8 max-w-[1600px] mx-auto">
+<div class="flex items-end justify-between border-b border-white/5 pb-8">
+<div>
+<span class="label-md text-primary font-bold uppercase tracking-[0.2em] mb-2 block">Personalized Stream</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-white mb-4">
+                        Recommendations for <span class="text-red-600 underline decoration-4 underline-offset-8">User #123</span>
+</h1>
+<p class="text-neutral-400 text-lg max-w-2xl leading-relaxed">
+                        Our Graph Neural Network has analyzed your interaction neighborhood. Based on your affinity for high-stakes drama and visual storytelling, we've curated these cinematic masterpieces.
+                    </p>
+</div>
+<div class="hidden xl:flex flex-col items-end text-right">
+<span class="text-neutral-500 text-xs uppercase tracking-widest mb-1">Inference Time</span>
+<span class="text-white font-mono text-2xl font-bold">142ms</span>
+</div>
+</div>
+</header>
+<!-- Metrics Dashboard Snippet (Side Insight Integration) -->
+<section class="px-8 mb-12 max-w-[1600px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary">
+<p class="text-neutral-500 text-[10px] uppercase tracking-widest mb-1">Model Engine</p>
+<h4 class="text-white font-bold text-lg">LightGCN v2</h4>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-neutral-700">
+<p class="text-neutral-500 text-[10px] uppercase tracking-widest mb-1">Training Dataset</p>
+<h4 class="text-white font-bold text-lg">MovieLens 100k</h4>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-tertiary">
+<p class="text-neutral-500 text-[10px] uppercase tracking-widest mb-1">Precision@10</p>
+<h4 class="text-white font-bold text-lg">0.245</h4>
+</div>
+</div>
+</section>
+<!-- Top 10 Recommendations Grid -->
+<section class="px-8 pb-16 max-w-[1600px] mx-auto">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-3xl font-bold text-white">Top 10 Recommendations</h2>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-highest rounded-full text-white hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 bg-surface-container-highest rounded-full text-white hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">sort</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+<!-- Movie Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="dramatic cinematic film poster of a lone figure standing against a neon-lit futuristic city skyline at night with atmospheric rain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAmwobK9gRe-oMmvrLMn6XnRB0w4twpYiS5ZPV8rpMXxGv9V61CJf__ZpykfpCaemXh4kF_3Wl6FwQULr4K405l_IPWG6NwHINOI90tw6N4RLEVX_b7EU5gjQrEkj_0XzzfoJxyhQc-CNKMtk6P7Ud9LFySuR5i_oYXI6xFCSCADaOBBZaqvtE2EZd58bvAq0FRlZL84rDU-BH_ctioY70KTJB7z8HvpOJlYct9MpW1825Xyq2uw5jXJmaaYF8CnEY0I4PLXo06w"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            98% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Neon Horizon</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Sci-Fi • Thriller</p>
+</div>
+<!-- Movie Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="moody black and white cinematic photography of an old cinema theatre interior with heavy velvet curtains and dramatic spotlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9ukLGmU6R11hA4TkQQtiR-B8MawEvDyvxiKIROj3BUuqY3YXNwR1QuZPcYfTyx59FlzcwmpkWDQ_TJF-jytg-CPNYLPc-wKapyGfBFXwxdqSdA5F9aKQESZedf6GB-whPOUhvG3ntDoGgcGOaWFbZS2vMHB3EnCq2x3TaD0aDYGzpi96vLtIYZHN_V2WIEqOgLN34JZG21XNnFxCNzBrZ73_J6WXdNAyvB8gL4BtDuKe8oXHmdxvHehZzhFkm9g_2vbEv9MQBDg"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            95% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">The Last Premiere</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Drama • Mystery</p>
+</div>
+<!-- Movie Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="close-up of a vintage camera lens reflecting a golden sunset over a sprawling desert landscape in cinematic widescreen style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8hykJqOSzT_AKvJbGK7uw_3Dvm0dmrAwtIGgCVE0Jxfk9W2_DmLZHesDGAcgP0EBEmmpOfEOpa5CHpXZPwh3AgqH5VzJideaNY2zGp4UfGwJbNXqsTYeXJyIhqrUJ3AdSkCjo6kOsi3f8sMMQI2oAc28yKCTpUeHOmvt7xqdAGKsso07Hokq97BuLp8V0z1aMzu4M6kicL-ChlRDiHoWTNkg0D9IEUwdhUS9Qsb9KoStSgVDFYw6HAdXob1lSCyr4u-woxkqlqQ"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            92% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Dust &amp; Shadows</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Western • Epics</p>
+</div>
+<!-- Movie Card 4 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="abstract artistic shot of blue and red stage lights through thick smoke creating a moody concert or theatrical atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv6fOAE_AImD6nfw0Wa2tvxd737x126O0jWZt-S4PbpfZWStl1r3DxIE7-mBmIL_vBX4sgyoZ0CNQMEfgUwpMz9MBzpw4c4aHvf2QO2zUQRKzMvmKcFCzMkiveXrp7PPLLkVJT1Fzby2scAwBTRX_i1XbDaPu-pzxsuhYn17ulpAadPciSyLWeRmQlr4df-RFrZIipjapsW9wW-FS49w-_qLCMQYKQmuCEj44Yj7Jon-HwVqR9UHRnra45dYLrcpl-O5iQHXLlgA"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            91% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Melody of Chaos</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Music • Documentary</p>
+</div>
+<!-- Movie Card 5 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="vibrant abstract explosion of colors resembling a nebula in deep space with sharp starry highlights and cinematic depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO-a1HHKSlHtJcOyvjHkDcQOKwixTO9pfIYo5VB7M37AAHB9bHte4FbGzeh6P_ZbA3drqEfI_XX8vyEV-TwerQimbD_5zIRZNQxpL08fLhHrk41LtT0DEIcNYVtj4Ujeh9wrDt-kGoBdWFFUKR1R9zsT-I47Rq5wzRPZvgz1A_Fe3AmSLKzLMZe2OCPpnXEHiW8cZB0ZpuKxlHiH4gaFuoolTqGHkje95VR_EVUWuXUjwJR26IKF8uzRmutg3HsW2f01fV8J0fDA"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            89% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Beyond The Void</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Space • Fantasy</p>
+</div>
+<!-- Movie Card 6 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="aerial drone shot of a winding road through a dense foggy forest at dawn with cool blue tones and mystical morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVeMdYHWbC7k3JaxF35ZYxogexhBSvj5vHCMZXAWSFh8_Aq8ZYSMNG4EulLkxONboNk0rNQgBWDOdxBFGxJrHOzR0k3taqoIMUPm2F4TASSvBTpm4gI0o6xSfK2bvuT3xNmOAwvvwfahtYKRrmNGp05VWp-8ioK9GvbkO_PFRBBk_a1KQuiApJRC7BZGABuuHnEYwDH0WrQDy7fx73ISk3U1KpG9Q1wKsaqeV1aKDkKqKXqZBLBaS9AtULXYz3QekWAXujHfHi1w"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            88% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Whispering Pines</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Horror • Noir</p>
+</div>
+<!-- Movie Card 7 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="close up of a photographer looking through a viewfinder in a busy city street with blurred urban motion in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD36IuzQhlwinPa-ZE06fBbbjPQ1rNj4MuXsUKfU4lA4u4bsuvghYoC-hITMi4Lx7CtlYv-nGNeb-S3FxMn_SnHP7ljWjKJHYCFYJ4VsOsS-nlkXzqxw1GieHtaNZUgI84Ly0UiNJYL4-qOnRpGs95a6EY1rDMiRZPbvIvk6IhIBvGEI1y3OpRwMs0P_9qXlX_Dv3XM97z8qk5a9AEQvtK4te1XBk4RO5w0pVndL05s1FFCHdPDkMGU32QGFOP9jNRttcB53NQlKA"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            87% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Snapshot</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Independent • Art</p>
+</div>
+<!-- Movie Card 8 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="cinematic low angle shot of a massive brutalist concrete building against a dark stormy sky with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuH6vNskqnLOlqCdakhG9HdCpJYHRE70gKFBQqL1NIzd76TZhdtbQ3Hpc8X4U65SqoAp8oLGPBa-OKevGw0sAn3kJFWHei9DqTkO3PSkqRX8sezHjCIoi1-HvS_hXXpUSJMuYXZCWxi_23FQDK5sY0n1O3W9-tx_LkV16T-MctHgcO1nWDNL5kf0F-CRkjH8RoDzhHXPKEA0SmAe1ZiuF8-4YLCGTb6NIsHIC7jxJbOjsNSp8bHHwn8PnfCe-jd_D8xq0ysfXW7w"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            85% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Concrete Silence</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Architecture • Noir</p>
+</div>
+<!-- Movie Card 9 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="underwater shot of sunlight rays piercing through deep blue ocean water with subtle bubbles and organic fluid motion" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIwZgKlAkbE01XEB5LJ8RDr9lFY4UweDYxkiDvtZiZ5dD_0qiJXmx_4eBkJhMQjTbf58ACKgDcOtIgmRGQYFCki7cNRfk7_F3RUqcip7jmuZNm73H4iC7Wsu7DOVXVNQERfCtnIooOWbLc7NArEE9suWUf21qbF8GJ4VgTpXB7f4PEmkIGjwyWHio-Av-yawDo1lglUaiwpfmiqvpgjTX3O9EKOgnBIltYyveWhRvp2PEkZ8T3lGCDn3iLZRR3q1mpIDsak5p85Q"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            84% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Blue Descent</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">Nature • Thriller</p>
+</div>
+<!-- Movie Card 10 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-md overflow-hidden bg-surface-container mb-4 transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+<img class="w-full h-full object-cover" data-alt="majestic medieval castle ruins on a cliffside during a purple and orange sunrise with mist rolling in from the sea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzmkI4I7HFapqPgpYwI8z_w2YQm3dI6gQdOPzO-nIkif0gksuwCdY-xRVZ3Xohwd4_WK5zi-OK32ZjRnCbBzgNuwOodQ8WrwZkSGBVTdwB1eESwQsNikuiMXgP5Zn90yGmbVzCWfkx0npdUjrbubn-wHWfFjTGexi9L9X_Ce9hpnkSd0fm8eB1oBajG1i4MSS333MONrTFlOWk1scGOZXOsWtpa4g4tjJpztJwkHZGFSUEUCtMPht-SR2fJv_-8GB-dZS-3K1cbg"/>
+<div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
+                            82% Match
+                        </div>
+</div>
+<h3 class="text-white font-bold group-hover:text-primary transition-colors truncate">Iron Crown</h3>
+<p class="text-neutral-500 text-xs uppercase tracking-widest mt-1">History • War</p>
+</div>
+</div>
+</section>
+<!-- Explainability Section -->
+<section class="px-8 pb-24 max-w-[1600px] mx-auto">
+<div class="bg-surface-container-low rounded-2xl p-10 border border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 blur-[100px] -mr-32 -mt-32"></div>
+<div class="flex flex-col lg:flex-row gap-12 items-start">
+<div class="lg:w-1/2">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="hub">hub</span>
+<h2 class="font-headline text-3xl font-bold text-white">Why these movies?</h2>
+</div>
+<p class="text-neutral-400 text-lg leading-relaxed mb-8">
+                            Our GNN (Graph Neural Network) doesn't just look at movies you've liked—it explores the vast social neighborhood of cinematic taste. By analyzing multi-hop relationships between items and users, we've identified a "cluster" of hidden gems that perfectly align with your specific sub-genre preferences.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<span class="px-4 py-2 bg-neutral-800 rounded-full text-neutral-300 text-xs font-medium border border-white/5">Graph Neighborhood Analysis</span>
+<span class="px-4 py-2 bg-neutral-800 rounded-full text-neutral-300 text-xs font-medium border border-white/5">Collaborative Filtering+</span>
+<span class="px-4 py-2 bg-neutral-800 rounded-full text-neutral-300 text-xs font-medium border border-white/5">Visual Embeddings</span>
+</div>
+</div>
+<div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-surface-container p-6 rounded-xl">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="groups">groups</span>
+<h4 class="text-white font-bold mb-2">Similar Tastes</h4>
+<p class="text-neutral-500 text-sm">You share 87% structural similarity with 12,400 other users who rated these titles highly.</p>
+</div>
+<div class="bg-surface-container p-6 rounded-xl">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="auto_awesome">auto_awesome</span>
+<h4 class="text-white font-bold mb-2">Discovery Bias</h4>
+<p class="text-neutral-500 text-sm">We've tuned the engine to favor novelty, ensuring you see movies outside of common blockbusters.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex lg:hidden justify-around items-center px-4 pb-safe bg-neutral-950/80 backdrop-blur-lg z-50 border-t border-white/5 shadow-[0_-10px_30px_rgba(0,0,0,0.8)]">
+<div class="flex flex-col items-center justify-center text-red-600 font-bold py-2 font-['Inter'] text-[10px] uppercase tracking-widest active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span>Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 py-2 font-['Inter'] text-[10px] uppercase tracking-widest active:scale-90 transition-transform hover:text-neutral-200">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span>Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 py-2 font-['Inter'] text-[10px] uppercase tracking-widest active:scale-90 transition-transform hover:text-neutral-200">
+<span class="material-symbols-outlined mb-1" data-icon="settings_input_component">settings_input_component</span>
+<span>Models</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 py-2 font-['Inter'] text-[10px] uppercase tracking-widest active:scale-90 transition-transform hover:text-neutral-200">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span>Profile</span>
+</div>
+</nav>
+</body></html>

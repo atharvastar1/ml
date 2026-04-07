@@ -1,0 +1,143 @@
+# GNN Movie Recommendation UI: Implementation Guide
+
+## Step 1: Set up the Streamlit Page
+Configure the page to have a clean, wide layout and a dark theme.
+
+```python
+import streamlit as st
+
+# Configure the page for a clean, professional look
+st.set_page_config(
+    page_title="GNN Movie Recommendation System",
+    page_icon="🎬",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Custom CSS for the Netflix Look
+st.markdown("""
+<style>
+    .main {
+        background-color: #0e1117;
+        color: white;
+    }
+    .stButton>button {
+        background-color: #E50914;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .stSelectbox div[data-baseweb="select"] {
+        background-color: #1a1c23;
+        border-radius: 5px;
+    }
+    /* Movie Card Styling */
+    .movie-card {
+        border-radius: 10px;
+        background-color: #1e1e1e;
+        padding: 10px;
+        transition: transform 0.3s ease;
+    }
+    .movie-card:hover {
+        transform: scale(1.05);
+    }
+    .movie-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-top: 10px;
+        color: white;
+    }
+    .match-score {
+        color: #E50914;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+</style>
+""", unsafe_allow_html=True)
+```
+
+## Step 2: Main Layout & Navigation
+Use columns and containers to structure the header and sidebar.
+
+```python
+# Sidebar: Model and System Info
+with st.sidebar:
+    st.image("https://via.placeholder.com/150/E50914/FFFFFF?text=GNN+MODEL", width=100)
+    st.title("System Architecture")
+    st.info("LightGCN v2.1")
+    st.metric("Model Precision@10", "0.245")
+    st.write("**Dataset:** MovieLens 100k")
+    st.write("**Architecture:** Graph Neural Network")
+    st.write("**Training Status:** Completed")
+    if st.button("Recalculate Model"):
+        st.toast("Re-training LightGCN...")
+
+# Header Section
+st.title("GNN Movie Recommendation System")
+st.subheader("Discover your next favorite film powered by Graph Neural Networks.")
+```
+
+## Step 3: User Input
+A simple, clean input section for the User ID.
+
+```python
+# User Input Section
+st.divider()
+col1, col2 = st.columns([2, 1])
+
+with col1:
+    user_id = st.selectbox(
+        "Select User ID to get personalized recommendations:",
+        options=[1, 12, 45, 102, 123, 500, 999],
+        index=4  # Default to User #123
+    )
+
+with col2:
+    st.write(" ") # Spacer
+    get_recs = st.button("✨ Get Recommendations", use_container_width=True)
+```
+
+## Step 4: Recommendation Grid (Top-10)
+Implement a dynamic grid using `st.columns`.
+
+```python
+if get_recs:
+    st.write(f"### Recommendations for User #{user_id}")
+    
+    # Placeholder data for demonstration
+    recommendations = [
+        {"title": "Neon Horizon", "score": "98% Match", "img": "https://via.placeholder.com/300x450/1a1a1a/E50914?text=Neon+Horizon"},
+        {"title": "The Last Premiere", "score": "95% Match", "img": "https://via.placeholder.com/300x450/1a1a1a/E50914?text=The+Last+Premiere"},
+        # ... repeat for 10 movies
+    ] * 5  # Duplicate for demo purposes
+    
+    # Grid Layout: 5 columns per row
+    rows = [recommendations[i:i + 5] for i in range(0, 10, 5)]
+    
+    for row in rows:
+        cols = st.columns(5)
+        for i, movie in enumerate(row):
+            with cols[i]:
+                st.markdown(f"""
+                <div class="movie-card">
+                    <img src="{movie['img']}" style="width:100%; border-radius:5px;">
+                    <div class="movie-title">{movie['title']}</div>
+                    <div class="match-score">{movie['score']}</div>
+                </div>
+                """, unsafe_allow_html=True)
+                st.write("") # Spacer
+
+    # Explainability Section
+    st.divider()
+    with st.expander("🔍 Why were these movies recommended?"):
+        st.write("""
+        Our **Graph Neural Network (LightGCN)** model analyzed your interaction neighborhood.
+        - **Similar Tastes:** You share 87% structural similarity with 12,400 other users.
+        - **Discovery Bias:** The engine identified 'hidden clusters' of sub-genre preferences you haven't explored yet.
+        """)
+```
+
+## Tips for Dynamic Posters
+- **The Movie Database (TMDb) API:** Register for a free API key at [themoviedb.org](https://www.themoviedb.org/documentation/api) to fetch real movie posters.
+- **OMDb API:** Another popular alternative for movie metadata and posters.
+- **Dynamic Loading:** Use `st.cache_data` in Streamlit to cache API calls and images for a smooth experience.

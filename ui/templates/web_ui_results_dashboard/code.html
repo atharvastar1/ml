@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-primary-fixed": "#410001",
+                  "primary-fixed": "#ffdad5",
+                  "inverse-surface": "#e5e2e1",
+                  "on-secondary-fixed-variant": "#8e1210",
+                  "secondary-container": "#921512",
+                  "secondary-fixed": "#ffdad5",
+                  "surface-variant": "#353534",
+                  "outline": "#af8782",
+                  "tertiary-fixed": "#d5e3ff",
+                  "surface-container-lowest": "#0e0e0e",
+                  "primary": "#ffb4aa",
+                  "on-secondary-fixed": "#410001",
+                  "surface-bright": "#3a3939",
+                  "primary-container": "#e50914",
+                  "on-background": "#e5e2e1",
+                  "tertiary-container": "#0072d7",
+                  "on-surface": "#e5e2e1",
+                  "surface-container-high": "#2a2a2a",
+                  "on-secondary-container": "#ff9f93",
+                  "on-primary": "#690003",
+                  "on-error-container": "#ffdad6",
+                  "surface-dim": "#131313",
+                  "error": "#ffb4ab",
+                  "secondary-fixed-dim": "#ffb4aa",
+                  "outline-variant": "#5e3f3b",
+                  "surface-container-highest": "#353534",
+                  "on-tertiary-fixed-variant": "#004689",
+                  "error-container": "#93000a",
+                  "surface-tint": "#ffb4aa",
+                  "inverse-on-surface": "#313030",
+                  "surface-container-low": "#1c1b1b",
+                  "surface-container": "#201f1f",
+                  "surface": "#131313",
+                  "on-error": "#690005",
+                  "primary-fixed-dim": "#ffb4aa",
+                  "on-tertiary-fixed": "#001b3c",
+                  "on-primary-container": "#fff7f6",
+                  "background": "#131313",
+                  "on-tertiary": "#003061",
+                  "tertiary-fixed-dim": "#a7c8ff",
+                  "inverse-primary": "#c0000c",
+                  "tertiary": "#a7c8ff",
+                  "secondary": "#ffb4aa",
+                  "on-tertiary-container": "#f8f9ff",
+                  "on-secondary": "#690003",
+                  "on-primary-fixed-variant": "#930007",
+                  "on-surface-variant": "#e9bcb6"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["Manrope"],
+                  "body": ["Inter"],
+                  "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .cinematic-gradient {
+      background: linear-gradient(180deg, rgba(229, 9, 20, 0.05) 0%, rgba(19, 19, 19, 1) 100%);
+    }
+    .poster-mask {
+      mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container/30">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-72 fixed left-0 top-0 pt-24 bg-[#0e0e0e] flex flex-col gap-y-6 border-r border-white/5 z-40 font-inter text-sm tracking-wide uppercase">
+<div class="px-8 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="hub">hub</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-white normal-case">Model Engine</h2>
+<p class="text-[10px] text-gray-500 tracking-widest">v4.2-Obsidian</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-y-1">
+<a class="flex items-center gap-4 py-3 text-[#e50914] font-bold border-l-4 border-[#e50914] pl-4 transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span>Neural Graph</span>
+</a>
+<a class="flex items-center gap-4 py-3 text-gray-500 pl-5 hover:text-white hover:bg-[#3a3939]/20 transition-all transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="Insights">insights</span>
+<span>Edge Weights</span>
+</a>
+<a class="flex items-center gap-4 py-3 text-gray-500 pl-5 hover:text-white hover:bg-[#3a3939]/20 transition-all transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+<span>Hyperparameters</span>
+</a>
+<a class="flex items-center gap-4 py-3 text-gray-500 pl-5 hover:text-white hover:bg-[#3a3939]/20 transition-all transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="blur_on">blur_on</span>
+<span>Node Embeddings</span>
+</a>
+<a class="flex items-center gap-4 py-3 text-gray-500 pl-5 hover:text-white hover:bg-[#3a3939]/20 transition-all transition-transform duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Backprop</span>
+</a>
+</nav>
+<div class="mt-auto px-8 pb-10 space-y-6">
+<button class="w-full py-4 bg-primary-container text-on-primary-container rounded-full font-bold text-xs tracking-widest hover:scale-105 active:opacity-80 transition-all">
+        Run Inference
+      </button>
+<div class="flex flex-col gap-4">
+<a class="flex items-center gap-3 text-gray-500 hover:text-white text-[11px] transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="description">description</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 text-gray-500 hover:text-white text-[11px] transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="code">code</span>
+<span>API</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]/40 backdrop-blur-xl flex justify-between items-center px-8 h-20 w-full font-manrope tracking-tight shadow-2xl shadow-black/50">
+<div class="flex items-center gap-12 ml-72">
+<h1 class="text-2xl font-black tracking-tighter text-[#e50914] uppercase">The Cinematic Curator</h1>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-white/70 hover:text-white transition-colors" href="#">Discover</a>
+<a class="text-[#e50914] border-b-2 border-[#e50914] pb-1" href="#">Analytics</a>
+<a class="text-white/70 hover:text-white transition-colors" href="#">Architecture</a>
+<a class="text-white/70 hover:text-white transition-colors" href="#">Library</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="p-2 text-white/70 hover:text-white hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-white/70 hover:text-white hover:bg-white/5 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-[#e50914]/30">
+<img alt="User profile with curator status" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with glasses in a dark suit with moody cinematic lighting and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRUdPxnEYZbMT6yIhzse98pxEXJpMf0pwqvFFrbtmpi5cc6WC1qs1m835NpXoFUNfuB3XrqWKtX3OHEX2guOdu1CCq_g7XEOb_PMBkOaYAsWQ75bIXCnT9CY0n4luC0SFYlomilTseXqy-CKAl86ZlvB3WKS6jlNmJJDqcebZtAwzhe42anvOaQMB3HQ62SweLY3qB6YdNE9xP5O8TbXfMoz_LmEcL32vcxUVSuilUarC46FlF1HHRdT5ciU9lkJ0XBZcMm36HVg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-72 pt-28 px-12 pb-20">
+<!-- Hero Analytics Header -->
+<section class="cinematic-gradient rounded-3xl p-10 mb-12 flex flex-col md:flex-row justify-between items-end gap-8 overflow-hidden relative border border-white/5">
+<div class="relative z-10">
+<span class="label-md uppercase tracking-[0.2em] text-primary mb-2 block font-semibold">User Analysis</span>
+<h2 class="text-6xl font-black font-headline tracking-tighter mb-4">USER_ID: 88204-X</h2>
+<div class="flex gap-8 mt-6">
+<div class="space-y-1">
+<p class="text-white/40 text-xs uppercase tracking-widest">Precision@10</p>
+<p class="text-3xl font-bold font-headline">0.942 <span class="text-sm text-green-500 font-normal ml-1">↑ 4.1%</span></p>
+</div>
+<div class="space-y-1">
+<p class="text-white/40 text-xs uppercase tracking-widest">Inference Time</p>
+<p class="text-3xl font-bold font-headline">124ms</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end relative z-10">
+<div class="bg-surface-container-high/60 backdrop-blur-md p-4 rounded-xl border border-white/10 mb-4">
+<p class="text-xs text-white/60 mb-2">Cluster Position</p>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-sm font-bold">Noir Enthusiast Tier-1</span>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-all">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+          Recalculate Weights
+        </button>
+</div>
+<!-- Decorative background blur -->
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary/10 blur-[100px] rounded-full"></div>
+</section>
+<!-- Top 10 Recommendations Grid -->
+<section class="mb-20">
+<div class="flex justify-between items-baseline mb-8">
+<h3 class="text-3xl font-black font-headline tracking-tight uppercase">Top 10 Recommendations</h3>
+<span class="text-white/40 text-sm italic font-body">Sorted by Neural Matching Score</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+<!-- Movie Card 1 -->
+<div class="group relative space-y-4 cursor-pointer">
+<div class="aspect-[2/3] rounded-md overflow-hidden bg-surface-container-highest relative transition-all duration-500 group-hover:scale-105 group-hover:ring-2 ring-primary/50">
+<img alt="Cinematic poster 1" class="w-full h-full object-cover poster-mask" data-alt="dramatic cinematic wide shot of a futuristic cyberpunk city skyline at night with neon lights reflecting in rain puddles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3aBO_8YkEG-MiSe_DPflGFSHX_5GrQCCTYFC8-3H7kGOUXlktF7ANRLDor_T3wihJ7wZTLg_hafqR-Ajgebrrcazr0vxbp5YyUaGLeuHis7ChLYWBGXkYTRqekiVpevEMzhO8BKgxGAezVy9tNU7Rlq7T3l6JBwMh8PePR0Ri3T-5B1-b0PXMcl0ndgURTAihDSyiud0F0JI44_TQ8C2-ER8UDrkUVdC-9-N982ypAKPlZjCks-4kLx8nEr3an8HGW4AgYKnhUA"/>
+<div class="absolute top-4 right-4 bg-primary-container/90 px-3 py-1 rounded-full backdrop-blur-sm">
+<span class="text-[10px] font-bold text-on-primary-container">98.4% MATCH</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-[10px] font-bold tracking-widest text-primary mb-1">CYBERPUNK • 2024</p>
+<h4 class="text-lg font-bold font-headline leading-tight">Neon Pulse</h4>
+</div>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="group relative space-y-4 cursor-pointer">
+<div class="aspect-[2/3] rounded-md overflow-hidden bg-surface-container-highest relative transition-all duration-500 group-hover:scale-105 group-hover:ring-2 ring-primary/50">
+<img alt="Cinematic poster 2" class="w-full h-full object-cover poster-mask" data-alt="black and white moody close-up of a vintage 35mm film camera on a wooden table with soft focus bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_rp7DYmQdpzLDqX2Pc9lbfA-wohy8oIOHiF5UVPQAWePrJxTAqKIL4EOhAowM_7blpRVVfCTUz7HBWSsvwy7IfDjwXoabislwF6nvFgC7N-cmAlUD8P1YQMUaYEk14nAMObaVdjbDNaeWMF3plzJZoScofW-FTDt2BbyWStzDHwjLAdbSpoQrqpE0-o2CvDxSxe64QrXTAselEZTu8amQwv2roV0m7I8Uhg4IqOyumZFcV6Y1lk-cNEEN3i49WXzeh4S3HJJFgQ"/>
+<div class="absolute top-4 right-4 bg-primary-container/90 px-3 py-1 rounded-full backdrop-blur-sm">
+<span class="text-[10px] font-bold text-on-primary-container">96.1% MATCH</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-[10px] font-bold tracking-widest text-primary mb-1">NOIR • 2023</p>
+<h4 class="text-lg font-bold font-headline leading-tight">The Last Frame</h4>
+</div>
+</div>
+</div>
+<!-- Movie Card 3 -->
+<div class="group relative space-y-4 cursor-pointer">
+<div class="aspect-[2/3] rounded-md overflow-hidden bg-surface-container-highest relative transition-all duration-500 group-hover:scale-105 group-hover:ring-2 ring-primary/50">
+<img alt="Cinematic poster 3" class="w-full h-full object-cover poster-mask" data-alt="scenic aerial view of a dense pine forest shrouded in thick morning mist and fog with cool blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY4iTKEtB3BAK9yPxauzMkZTBB9X9O-GBsahPR6jlik-oSdh2iT9Wm_XcHXF1LJu0AhDe1ODO3Glve7YdUeaejyJhk5cRA1DP41mJ0uRopfMB3FF5Ir58oA-UtaDM9NhjqvIwIJgjpO-ySRqrZlqbEUuw9pP9miyZ5fPreoHsL_wlbdksDsA842UTfoAoRa4rNi_flXwB0JlZGuneXF7_nSb63xcs1ExckDCjtKIZqLCdabCBLqkh84ukc-zx-mTFaIesafACiSA"/>
+<div class="absolute top-4 right-4 bg-primary-container/90 px-3 py-1 rounded-full backdrop-blur-sm">
+<span class="text-[10px] font-bold text-on-primary-container">94.8% MATCH</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-[10px] font-bold tracking-widest text-primary mb-1">MYSTERY • 2024</p>
+<h4 class="text-lg font-bold font-headline leading-tight">Silent Pines</h4>
+</div>
+</div>
+</div>
+<!-- Movie Card 4 -->
+<div class="group relative space-y-4 cursor-pointer">
+<div class="aspect-[2/3] rounded-md overflow-hidden bg-surface-container-highest relative transition-all duration-500 group-hover:scale-105 group-hover:ring-2 ring-primary/50">
+<img alt="Cinematic poster 4" class="w-full h-full object-cover poster-mask" data-alt="interior view of an ornate empty classic theater with red velvet seats and gold trimmings under soft spotlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9uKY2mcnr5gBWJkhLwRv9PQsY91kRJ4JIGeJqckn6f54ni-_JnUaRXc7u8EG4olFICaZAVE9qpaQNbmFdRu4j9omdUk26dG70PqoJybdCwCa0Zmdc58q-fk0bnsFUCcOgfUC4xVe4ih0afam18VzuIC3gIDOltNMnMd-N1G6vzEnZGzREZF55LTGn29ssz5nDPEqXiAzN-SMySfdPkX3KLjwznRUk-_rNdzIfLI6HyQnb0vnKUbR_9K8TfU4z3Sco1nJQCHnHzw"/>
+<div class="absolute top-4 right-4 bg-primary-container/90 px-3 py-1 rounded-full backdrop-blur-sm">
+<span class="text-[10px] font-bold text-on-primary-container">92.2% MATCH</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-[10px] font-bold tracking-widest text-primary mb-1">DRAMA • 2022</p>
+<h4 class="text-lg font-bold font-headline leading-tight">Act II</h4>
+</div>
+</div>
+</div>
+<!-- Movie Card 5 -->
+<div class="group relative space-y-4 cursor-pointer">
+<div class="aspect-[2/3] rounded-md overflow-hidden bg-surface-container-highest relative transition-all duration-500 group-hover:scale-105 group-hover:ring-2 ring-primary/50">
+<img alt="Cinematic poster 5" class="w-full h-full object-cover poster-mask" data-alt="high contrast shot of an astronaut floating in deep space with earth reflecting in the helmet visor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmDGLLqL0K0OIFlqjueiMB_5Tmszy7jOiWnYy1R7ig-yzQ67aXiBLT2Vzq0oIH0YiEZ1dchspXTnwWEenxAxlYxwu3jbCoyF9nXijrIlsRNn9-ngSpE7UbKj0qaeydY9KHvR3kFwLAtYdkejH7evlUvSGFfqy4K8tF-ilXhCmQpVXcS7nE9JXwnzgz9fZeqx-LaZmAa0W8bj75FDDJs4gz-pd-_RNmQ2cFrrTf7y6xRSS0rplpEV4SA1Ka2iNIotigi91cBMhE0g"/>
+<div class="absolute top-4 right-4 bg-primary-container/90 px-3 py-1 rounded-full backdrop-blur-sm">
+<span class="text-[10px] font-bold text-on-primary-container">91.7% MATCH</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-[10px] font-bold tracking-widest text-primary mb-1">SCI-FI • 2024</p>
+<h4 class="text-lg font-bold font-headline leading-tight">Void Reach</h4>
+</div>
+</div>
+</div>
+</div>
+<!-- Bleed effect placeholder for pagination/infinite scroll hint -->
+<div class="mt-8 flex justify-center">
+<button class="px-8 py-3 bg-surface-container-high hover:bg-surface-bright rounded-full text-sm font-semibold transition-colors flex items-center gap-2">
+          View All 10 Results
+          <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Explainability Section -->
+<section>
+<div class="flex flex-col gap-2 mb-10">
+<span class="text-primary font-bold uppercase tracking-widest text-xs">Model Transparency</span>
+<h3 class="text-4xl font-black font-headline tracking-tighter uppercase">Why these movies?</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Similar Tastes Card -->
+<div class="bg-surface-container-low p-10 rounded-2xl border border-white/5 relative overflow-hidden group">
+<div class="relative z-10">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="groups">groups</span>
+</div>
+<h4 class="text-2xl font-bold font-headline mb-4">Similar Tastes</h4>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+              Our Collaborative Filter identified a high-affinity cluster matching your frequent engagement with <span class="text-white font-bold italic">French New Wave</span> and <span class="text-white font-bold italic">Slow Cinema</span>. These users also frequently rated the recommended titles with 4.5+ stars.
+            </p>
+<div class="flex -space-x-3">
+<img alt="Profile 1" class="w-10 h-10 rounded-full border-2 border-surface-container-low" data-alt="professional headshot of a middle-aged man with a beard and intense creative look with artistic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_MqqIMMksNUTr_7FNq1q9DcmfmWziVaFwDLySr9Z1ulU3Rjj4ABheWm-ZPqjyptTSQlHZQPo2o6y6_XYZkie2O3r9l6_kV5hTndI-JI9RV8iWC7DtfF2Rb1B_I5hDZV1vXC0vxjEaU-h4mSEpWnW3VW-oGqS0B6rt6JahC45bbs9-Um0XIOAS4JULRg1FOglQfa6iSxqazyRdgoCJdMYoED1UhuoWH-88NPZqRReQj3oUHf9dPHtI_WPovS2r41CBkOFPv2SeQg"/>
+<img alt="Profile 2" class="w-10 h-10 rounded-full border-2 border-surface-container-low" data-alt="close-up portrait of a woman laughing in a warm urban setting with golden hour light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk7iZy9DavEpLDloPcF9SAkyGxrWa7lmFzKukomnB5gGIIsDFD_RorbK2XaJ80zaa-3q_7kBmjXMdo8LtNR1COXKbWxEqnI0TIL1IZeoRhUCidrU2Y35wQPgv2KRWjtMCi92yii6fpgk1NjlcgOE1usGKenQpdDw6JzlNCmROHpf8GbZQAn0GRR51JoMkWdw8_5hyJAbEkY-gRzuUnShyBXBwe29I956ZnsvyMNbXdgrXbVAsIbOFYHbSDRcI_juOXJjq3bAcfWw"/>
+<img alt="Profile 3" class="w-10 h-10 rounded-full border-2 border-surface-container-low" data-alt="stylish young man looking thoughtfully into the distance with cinematic teal and orange lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Aewk2DkrLKRlzDCqKugAVLQcWg_sjENptUduKbAdA4yuJVxNiQ4sj5_JLdKAzM0lSm4LplYAXfkQjdhBDtEscARfg6WFN47W67HwPfzx1FxljzGwTJyBTaR1HHhpVR89V-3QZzQXDjbsRqnfhSRbfl5wxWByzH5_MLMQ3ZnY0NssymyxVAYRnPNQN5dJXbb2T7NSQGMciDPjSokLGJBcO43RGWaHGj8U-3C_EYeCuYWR7MB9bP6WDMpRzxX87DAIetwzoqwUNw"/>
+<div class="w-10 h-10 rounded-full bg-surface-bright flex items-center justify-center text-[10px] font-bold border-2 border-surface-container-low">+1.2k</div>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+</div>
+<!-- Discovery Bias Card -->
+<div class="bg-surface-container-low p-10 rounded-2xl border border-white/5 relative overflow-hidden group">
+<div class="relative z-10">
+<div class="w-12 h-12 bg-tertiary-container/10 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-tertiary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h4 class="text-2xl font-bold font-headline mb-4">Discovery Bias</h4>
+<p class="text-on-surface-variant leading-relaxed mb-6">
+              We've injected a <span class="text-white font-bold">12.5% Serendipity Factor</span> into the weights. These movies branch away from your usual patterns into <span class="text-white font-bold italic">Expressionist Horror</span> to explore potential untapped interests based on visual geometry and pacing.
+            </p>
+<div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[12.5%]"></div>
+</div>
+<p class="text-[10px] text-white/40 mt-2 uppercase tracking-widest">Exploration vs Exploitation Ratio</p>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-tertiary/5 rounded-full blur-3xl group-hover:bg-tertiary/10 transition-all"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Info -->
+<footer class="ml-72 px-12 py-8 border-t border-white/5 flex justify-between items-center text-[10px] uppercase tracking-widest text-white/20 font-inter">
+<div>© 2024 Cinematic Curator Intelligence Engine</div>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Schema</a>
+<a class="hover:text-primary transition-colors" href="#">Model Weights</a>
+<a class="hover:text-primary transition-colors" href="#">Logout Curator</a>
+</div>
+</footer>
+</body></html>

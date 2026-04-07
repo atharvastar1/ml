@@ -47,11 +47,10 @@ def load_assets():
 
 u_emb, i_emb, movie_names = load_assets()
 
-def get_template(path):
-    with open(path, 'r') as f: return f.read()
-
-HOME_HTML = get_template('/Users/atharvainteractives/stitch/gnn_recommendations_home/code.html')
-RESULTS_HTML = get_template('/Users/atharvainteractives/stitch/gnn_recommendations_results/code.html')
+# --- PORTABLE TEMPLATE LOADING ---
+TEMPLATE_BASE = os.path.join(os.path.dirname(__file__), 'templates')
+HOME_HTML = get_template(os.path.join(TEMPLATE_BASE, 'gnn_recommendations_home', 'code.html'))
+RESULTS_HTML = get_template(os.path.join(TEMPLATE_BASE, 'gnn_recommendations_results', 'code.html'))
 
 # ROBUST QUERY PARSER
 # Streamlit 1.30+ uses st.query_params as an object

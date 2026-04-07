@@ -1,0 +1,26 @@
+# Project: GNN-Based Movie Recommendation System (LightGCN)
+
+## 1. Overview
+A high-fidelity web interface for a Graph Neural Network (GNN) based movie recommendation engine, specifically utilizing the LightGCN model. The UI mimics modern streaming platforms like Netflix to provide a professional demo experience.
+
+## 2. Target Audience
+- Project Reviewers/Examiners
+- Data Science Portfolio viewers
+- Users interested in GNN applications
+
+## 3. Key Features
+- **User Identification:** Simple input/dropdown for User ID selection.
+- **Dynamic Recommendations:** Top-K (default 10) movie grid display.
+- **Movie Cards:** High-quality cards with titles, confidence scores, and placeholder posters.
+- **Explainability Section:** "Why this was recommended" based on graph neighborhood or similar users.
+- **Model Transparency:** Technical sidebar/section showing LightGCN details, dataset info, and Precision@K metrics.
+
+## 4. Visual Style (Netflix-Style)
+- **Theme:** Dark Mode.
+- **Layout:** Responsive grid (2-5 columns depending on screen size).
+- **Accents:** High-contrast red for buttons and key highlights.
+
+## 5. Technical Stack (Proposed)
+- **Frontend:** Streamlit
+- **Backend:** Python (PyTorch Geometric for LightGCN)
+- **Data:** MovieLens or similar movie dataset
