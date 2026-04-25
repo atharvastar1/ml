@@ -1,0 +1,8 @@
+# Mark large UI templates as vendored to fix GitHub language stats
+ui/templates/** linguist-vendored
+static/** linguist-vendored
+
+# Also ignore any generated artifacts
+*.log linguist-vendored
+data/processed/** linguist-vendored
+saved_model/** linguist-vendored
