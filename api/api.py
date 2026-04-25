@@ -6,15 +6,14 @@ import os
 from typing import List, Optional
 import numpy as np
 
-# Local imports
-from src.lightgcn_model import LightGCN
-from src.faiss_search.py import FAISSRecommender # I realized I put faiss_search.py in src/ but I'll import it correctly
-
-# Actually, I'll import from src directly
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Local imports
 from src.lightgcn_model import LightGCN
 from src.faiss_search import FAISSRecommender
+from src.feature_engineering import FeatureEngineer
+from src.ranking_layer import ReRanker
 
 app = FastAPI(
     title="LightGCN Recommendation API",
@@ -28,6 +27,8 @@ STATE = {
     "user_embedding": None,
     "item_embedding": None,
     "recommender": None,
+    "feature_engineer": None,
+    "reranker": None,
     "movie_names": None,
     "num_users": 0,
     "num_items": 0
@@ -65,8 +66,14 @@ async def startup_event():
     STATE["user_embedding"] = torch.load('saved_model/user_embeddings.pt', map_location='cpu')
     STATE["item_embedding"] = torch.load('saved_model/item_embeddings.pt', map_location='cpu')
     
-    # Initialize FAISS
-    STATE["recommender"] = FAISSRecommender(STATE["item_embedding"])
+    # Initialize Feature Engineer and ReRanker (System Design Integration)
+    STATE["feature_engineer"] = FeatureEngineer()
+    # Need Item Map to extract metadata
+    with open('data/processed/item_mapping.json', 'r') as f:
+        item_map = json.load(f)
+    STATE["feature_engineer"].extract_features(item_map)
+    
+    STATE["reranker"] = ReRanker()
     
     # Load movie titles
     with open(names_path, 'r') as f:
@@ -87,22 +94,35 @@ def get_recommendations(request: RecommendationRequest):
     if user_idx < 0 or user_idx >= STATE["num_users"]:
         raise HTTPException(status_code=400, detail=f"Invalid user_id. Must be between 0 and {STATE['num_users']-1}")
     
-    # Get user embedding
-    u_emb = STATE["user_embedding"][user_idx]
-    
-    # Get top-K using FAISS (get more for filtering)
-    search_k = request.k + (len(request.exclude_history) if request.exclude_history else 0)
+    # --- ANN RETRIEVAL STAGE (Top-100) ---
+    search_k = 100 # Retrieve a larger candidate pool for re-ranking
     scores, indices = STATE["recommender"].recommend(u_emb, k=search_k)
     
+    # Filter History
+    if request.exclude_history:
+        mask = ~np.isin(indices, request.exclude_history)
+        indices = indices[mask]
+        scores = scores[mask]
+    
+    # --- RANKING LAYER STAGE (MLP + Metadata) ---
+    # Fetch embeddings and metadata for candidates
+    candidate_indices = indices
+    cand_item_embs = STATE["item_embedding"][candidate_indices]
+    cand_metadata = STATE["feature_engineer"].get_feature_tensor(candidate_indices)
+    
+    # Re-rank using MLP Logic
+    final_scores = STATE["reranker"].rank(u_emb, cand_item_embs, cand_metadata, scores)
+    
+    # Final Selection (Top-K)
+    best_indices = np.argsort(-final_scores)[:request.k]
+    
     recommendations = []
-    for idx, score in zip(indices, scores):
-        if request.exclude_history and int(idx) in request.exclude_history:
-            continue
-            
+    for idx_in_top in best_indices:
+        real_idx = candidate_indices[idx_in_top]
         recommendations.append(RecommendationResponse(
-            item_idx=int(idx),
-            item_name=STATE["movie_names"].get(str(idx), f"Movie {idx}"),
-            score=float(score)
+            item_idx=int(real_idx),
+            item_name=STATE["movie_names"].get(str(real_idx), f"Movie {real_idx}"),
+            score=float(final_scores[idx_in_top])
         ))
         
         if len(recommendations) == request.k:

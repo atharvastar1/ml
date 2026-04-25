@@ -30,7 +30,7 @@ class RecommendationEngine:
             
         return recommendations
 
-    def mmr_recommend(self, user_idx, k=10, lambda_param=0.5, exclude_history=None):
+    def mmr_recommend(self, user_idx, k=10, lambda_param=0.5, history_indices=None):
         """
         Maximal Marginal Relevance (MMR) for diversity.
         Score = lambda * similarity(u, i) - (1-lambda) * max(similarity(i, j) for j in result_set)
@@ -40,9 +40,6 @@ class RecommendationEngine:
         scores = torch.matmul(user_emb, self.item_embedding.t())
         scores = scores.cpu().detach().numpy()
         
-        if exclude_history is not None:
-            scores[list(exclude_history)] = -np.inf
-            
         # 2. Candidate pool (top 100)
         candidate_indices = np.argsort(-scores)[:100]
         
@@ -53,36 +50,31 @@ class RecommendationEngine:
         while len(selected_indices) < k and remaining_indices:
             mmr_scores = []
             for candidate in remaining_indices:
-                # Relevance component
                 relevance = scores[candidate]
-                
-                # Diversity component (max similarity to already selected items)
-                # Compute cosine similarity between candidate and all selected items
                 cand_emb = self.item_embedding[candidate]
                 sel_embs = self.item_embedding[selected_indices]
-                
-                # Cosine similarity: (a . b) / (|a|*|b|)
-                # If embeddings are already normalized (standard in some GCNs), dot product is fine.
-                # Here we use raw dot product as a proxy for similarity.
                 similarities = torch.matmul(sel_embs, cand_emb.t())
                 redundancy = torch.max(similarities).item()
-                
-                # MMR score
                 mmr_val = lambda_param * relevance - (1 - lambda_param) * redundancy
                 mmr_scores.append(mmr_val)
             
-            # Select best candidate
             best_idx = np.argmax(mmr_scores)
             selected_indices.append(remaining_indices.pop(best_idx))
             
-        # Format output
+        # Format output with Explainability
         recommendations = []
         for idx in selected_indices:
             item_name = self.item_names.get(str(idx), f"Item {idx}") if self.item_names else f"Item {idx}"
+            # ADD XAI EXPLANATION
+            explanation = ""
+            if history_indices is not None:
+                explanation = self.explain_recommendation(user_idx, idx, history_indices)
+            
             recommendations.append({
                 'item_idx': int(idx),
                 'item_name': item_name,
-                'score': float(scores[idx])
+                'score': float(scores[idx]),
+                'explanation': explanation
             })
             
         return recommendations
@@ -145,3 +137,28 @@ class RecommendationEngine:
         new_user_emb = torch.mean(liked_embs, dim=0)
         
         return new_user_emb
+
+    def get_similar_items(self, item_idx, k=10):
+        """
+        Find items with similar embeddings to the query item (Neural Similarity).
+        """
+        query_emb = self.item_embedding[item_idx]
+        scores = torch.matmul(query_emb, self.item_embedding.t())
+        scores = scores.cpu().detach().numpy()
+        
+        # Exclude the query item itself
+        scores[item_idx] = -np.inf
+        
+        top_k_indices = np.argsort(-scores)[:k]
+        top_k_scores = scores[top_k_indices]
+        
+        results = []
+        for idx, score in zip(top_k_indices, top_k_scores):
+            item_name = self.item_names.get(str(idx), f"Item {idx}") if self.item_names else f"Item {idx}"
+            results.append({
+                'item_idx': int(idx),
+                'item_name': item_name,
+                'score': float(score),
+                'explanation': f"Because it shares a latent neighborhood with '{self.item_names.get(str(item_idx), 'Query')}'."
+            })
+        return results
