@@ -1,8 +1,8 @@
-# Mark large UI templates as vendored to fix GitHub language stats
-ui/templates/** linguist-vendored
-static/** linguist-vendored
+# Keep core UI templates visible to show the full-stack nature of the project
+# But ignore the massive 4.9MB generated map which skews the stats
+static/embedding_map.html linguist-vendored
 
-# Also ignore any generated artifacts
+# Ignore logs and processed data
 *.log linguist-vendored
 data/processed/** linguist-vendored
 saved_model/** linguist-vendored
