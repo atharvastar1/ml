@@ -4,9 +4,11 @@ __pycache__/
 .DS_Store
 data/ml-100k
 data/ml-100k.zip
-saved_model/
+# saved_model/  <-- Removed from ignore to include weights
 .ipynb_checkpoints/
 .vscode/
 .idea/
 .env
 *.log
+backend.log
+frontend.log
